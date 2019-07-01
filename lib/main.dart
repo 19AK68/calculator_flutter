@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String calculatorString = '';
 
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
         body:Column(
           children: <Widget>[
-            Container( constraints: BoxConstraints(maxWidth: double.infinity),
+            Container( constraints: BoxConstraints(minWidth: calculatorString.length.toDouble()),
                 child:  NumberDisplay(value: calculatorString)
 
         ),
