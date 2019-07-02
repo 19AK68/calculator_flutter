@@ -1,4 +1,5 @@
 import 'package:flutter_calc/number-format.dart';
+import 'dart:math';
 
 class Calculations {
   static const ADDITION = '+';
@@ -55,7 +56,7 @@ class Calculator {
       return text;
     }
 
-    return NumberFormatter.format(result.toString());
+    return NumberFormatter.format(result.toString().substring(0,min(10,result.toString().length)));
   }
 
 

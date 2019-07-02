@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -21,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -37,75 +35,57 @@ class _MyHomePageState extends State<MyHomePage> {
   List<String> calculations = [];
   String calculatorString = '';
 
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-      title: Text(widget.title),
-      centerTitle: false,
-      actions: <Widget>[
-
-        IconButton(
-          icon: Icon(Icons.history),
-          onPressed: () {
-            _navigateAndDisplayHistory(context);
-          },
-        )
-      ],
-    ),
-        body:Column(
-          children: <Widget>[
-            Container( constraints: BoxConstraints(minWidth: calculatorString.length.toDouble()),
-                child:  NumberDisplay(value: calculatorString)
-
-        ),
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: false,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.history),
+            onPressed: () {
+              _navigateAndDisplayHistory(context);
+            },
+          )
+        ],
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+              constraints:
+                  BoxConstraints(minWidth: calculatorString.length.toDouble()),
+              child: NumberDisplay(value: calculatorString)),
           IntrinsicHeight(
-
-
-            child:Row(crossAxisAlignment: CrossAxisAlignment.stretch,
-
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    child: CalculatorButtons(onTap: _onPressed),
-
-
-                  ),
-                  flex: 15,
+              child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  child: CalculatorButtons(onTap: _onPressed),
                 ),
-                Expanded(
-                  child:
-                  Container(
+                flex: 15,
+              ),
+              Expanded(
+                child: Container(
                   //  height: 100.0,
 
-                    decoration: BoxDecoration(
-
-                      color: Colors.blueAccent.withOpacity(0.5
-                      ) ,
-
-                      border: Border.all(
-                        color: Color.fromRGBO(0, 0, 0, 0.1),
-                        width: 0.5,
-                      ),
+                  decoration: BoxDecoration(
+                    color: Colors.blueAccent.withOpacity(0.5),
+                    border: Border.all(
+                      color: Color.fromRGBO(0, 0, 0, 0.1),
+                      width: 0.5,
                     ),
                   ),
-                  flex: 1,
                 ),
-              ],
-
-            )
-                )
-          ],
-
-
-          ),
-
+                flex: 1,
+              ),
+            ],
+          ))
+        ],
+      ),
     );
-
   }
-
 
   _navigateAndDisplayHistory(BuildContext context) async {
     final result = await Navigator.push(
@@ -161,10 +141,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
 
     setState(() {
-      if (!isNewEquation
-          && operations.length > 0
-          && operations.last == Calculations.EQUAL
-      ) {
+      if (!isNewEquation &&
+          operations.length > 0 &&
+          operations.last == Calculations.EQUAL) {
         calculatorString = buttonText;
         isNewEquation = true;
       } else {
