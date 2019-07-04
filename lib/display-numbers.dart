@@ -5,35 +5,23 @@ class NumberDisplay extends StatelessWidget {
 
   final String value;
 
-
-
   @override
   Widget build(BuildContext context) {
-    return
-         Padding(
-          padding: EdgeInsets.all(40.0),
-
-
-              child: Row( mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(value,
-                    textAlign:TextAlign.right,
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
-                ],
-
-              ),
-
-
-
+    return Padding(
+      padding: EdgeInsets.all(40.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Text(
+            value,
+            textAlign: TextAlign.right,
+            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
     );
-
-
-
-
   }
-
 }
-
 
 //return Padding(
 //padding: EdgeInsets.only(
