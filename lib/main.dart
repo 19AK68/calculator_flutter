@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Calculator'),
     );
@@ -50,40 +50,101 @@ class _MyHomePageState extends State<MyHomePage> {
           )
         ],
       ),
-      body: Column(
+      body:     PageView(
         children: <Widget>[
           Container(
-              constraints:
-                  BoxConstraints(minWidth: calculatorString.length.toDouble()),
-              child: NumberDisplay(value: calculatorString)),
-          IntrinsicHeight(
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                          Expanded(
-                            child: Container(
-                              child: CalculatorButtons(onTap: _onPressed),
-                            ),
-                            flex: 15,
+            child:
+            Column(
+              children: <Widget>[
+                Container(
+                    constraints:
+                    BoxConstraints(minWidth: calculatorString.length.toDouble()),
+                    child: NumberDisplay(value: calculatorString)),
+
+
+                IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            child: CalculatorButtons(onTap: _onPressed),
                           ),
-                          Expanded(
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.blueAccent.withOpacity(0.5),
-                                border: Border.all(
-                                  color: Color.fromRGBO(0, 0, 0, 0.1),
-                                  width: 0.5,
-                                ),
+                          flex: 15,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.blueAccent.withOpacity(0.5),
+                              border: Border.all(
+                                color: Color.fromRGBO(0, 0, 0, 0.1),
+                                width: 0.5,
                               ),
                             ),
-                            flex: 1,
                           ),
-                  ],
-          )
-          )
-        ],
+                          flex: 1,
+                        ),
 
+                      ],
+                    )
+                )
+              ],
+
+            ),
+          ),
+          Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      constraints:
+                      BoxConstraints(minWidth: calculatorString.length.toDouble()),
+                      child: NumberDisplay(value: calculatorString)
+                  ),
+                  IntrinsicHeight(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[100],
+                              border: Border.all(
+                                color: Color.fromRGBO(0, 0, 0, 0.1),
+                                width: 0.5,
+                              ),
+                            ),
+
+                                            // child: CalculatorButtons(onTap: _onPressed),
+                          ),
+                          flex: 1,
+                        ),
+                        Expanded(
+                          child: Container(
+                              height: 390.0,
+                            child: Center(child:Text("Page 2")),
+                            color: Colors.blueAccent.withOpacity(0.5),
+                          ),
+                          flex: 15,
+                        )
+
+
+                      ],
+
+                    ),
+
+
+
+                  )
+
+                ],
+              )
+
+          )
+
+        ],
+        scrollDirection: Axis.horizontal,
       ),
+
     );
   }
 
