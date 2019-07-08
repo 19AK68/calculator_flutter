@@ -13,7 +13,7 @@ class CalculatorButtonScientific extends  StatelessWidget {
         child: Container(
 
             decoration: BoxDecoration(
-              color: Colors.blueGrey.withOpacity(0.1) ,
+              color: Colors.blueAccent.withOpacity(0.5) ,
 
               border: Border.all(
                 color: Color.fromRGBO(0, 0, 0, 0.1),
